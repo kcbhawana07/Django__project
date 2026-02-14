@@ -22,4 +22,5 @@ urlpatterns = [
     path('accounts/',include('accounts.urls')),
     path('bookings/',include('bookings.urls')),
     path('services/',include('services.urls')),
+    path('account/', include('django.contrib.auth.urls')),#This automatically gives:Login,Logout,Password reset
 ]
