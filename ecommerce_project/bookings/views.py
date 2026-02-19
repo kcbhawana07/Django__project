@@ -4,6 +4,8 @@ from django.db import IntegrityError
 from services.models import Service
 from .models import Booking
 from .forms import BookingForm
+
+
 # Create your views here.
 @login_required
 def create_booking(request, id):
@@ -50,4 +52,11 @@ def cancel(request, id):
     return redirect('history')
 
 
+
+@login_required
+def history(request):
+    bookings = Booking.objects.filter(user=request.user).order_by('-booking_date')
+    return render(request, 'bookings/history.html', {
+        'bookings': bookings
+    })
 
